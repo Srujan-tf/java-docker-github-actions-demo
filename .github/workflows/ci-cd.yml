@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repositry
-        uses: actions/checkout@version4
+        uses: actions/checkout@v4
       - name: setupjava
         uses: actions/setup-java@v4
         with:
