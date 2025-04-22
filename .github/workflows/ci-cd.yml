@@ -35,7 +35,7 @@ jobs:
       #    IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}
       #    docker push $IMAGE_URI:latest        
       - name: Login to Docker Hub
-        uses: docker/login-@V3              
+        uses: docker/login-@v4              
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}    
