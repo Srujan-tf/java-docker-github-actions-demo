@@ -5,6 +5,7 @@ on:
 
 jobs:
   Create-eks:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - name: printing variables
