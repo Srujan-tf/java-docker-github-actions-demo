@@ -22,3 +22,14 @@ jobs:
           curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
           sudo mv /tmp/eksctl /usr/local/bin
           eksctl version
+      - name: Create EKS Cluster
+        run: |
+          eksctl create cluster \
+            --name ${{secrets.CLUSTER_NAME}} \
+            --region ${{secretes.AWS_REGION}} \
+            --nodegroup-name linux-nodes \
+            --node-type t2.micro \
+            --nodes 2 \
+            --nodes-min 1 \
+            --nodes-max 3 \
+            --managed          
