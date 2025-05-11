@@ -18,4 +18,9 @@ jobs:
         run: |
           curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
           sudo mv /tmp/eksctl /usr/local/bin
+<<<<<<< HEAD
           eksctl version
+=======
+          eksctl version
+    
+>>>>>>> 948ecf97edb37cc15d8fa22fad0f54731b0b7b73
