@@ -26,7 +26,7 @@ jobs:
         run: |
           eksctl create cluster \
             --name ${{secrets.CLUSTER_NAME}} \
-            --region ${{secretes.AWS_REGION}} \
+            --region ${{secrets.AWS_REGION}} \
             --nodegroup-name linux-nodes \
             --node-type t2.micro \
             --nodes 2 \
