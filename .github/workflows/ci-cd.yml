@@ -44,3 +44,16 @@ jobs:
       #   run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/java-demo:latest .
       # - name: Push docker image
       #   run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/java-demo:latest       
+      - name: Setup Kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+         version: 'latest'
+      - name: Update kube config for EKS
+        run: |
+          aws eks update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
+      - name: Deploy to EKS
+        run: |
+         IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}
+         sed "s|<IMAGE_URI>|$IMAGE_URI:latest|g" k8s/deployment.yaml > k8s/deployment-final.yaml
+         kubectl apply -f k8s/deployment-final.yaml
+         kubectl apply -f k8s/service.yaml
