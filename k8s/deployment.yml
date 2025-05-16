@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Java-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Java-demo
+  template:
+    metadata:
+      labels:
+        app: Java-demo
+    spec:
+      containers:
+      - name: Java-demo
+        image: 868948464739.dkr.ecr.us-east-1.amazonaws.com/dummy
+        ports:
+        - containerPort: 8080
