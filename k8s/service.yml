@@ -4,7 +4,7 @@ metadata:
   name: javademoservice
 spec:
   selector:
-    app.kubernetes.io/name: Java-demo
+    app.kubernetes.io/name: java-demo
   ports:
     - protocol: TCP
       port: 80
